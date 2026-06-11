@@ -1,5 +1,5 @@
 import java.util.*;
-public class Sets{
+public class Hs{
     public static void main(String[] args){
         //Set
         Set <Integer>s=new HashSet<>();
@@ -26,9 +26,9 @@ public class Sets{
          System.out.println("Size of rthe set:"+l.size());
 
         TreeSet<Integer> t=new TreeSet<>();
-        t.add(100);
-        t.add(300);
-        t.add(200);
+        for(Integer n:h){
+            t.add(n);
+        }
         System.out.println("==============TREESET EXAMPLE===============");
         System.out.println(t);
         NavigableSet <Integer> i=new TreeSet<>();
@@ -39,5 +39,10 @@ public class Sets{
         i.add(4);
         System.out.println("==============NAVIGABLESET EXAMPLE===============");
         System.out.println(i);
+        System.out.println("set is empty:"+i.isEmpty());
+        System.out.println(i.remove(4));
+        System.out.println(i.contains(9));
+        System.out.println(i.isEmpty());
+
     }
 }
