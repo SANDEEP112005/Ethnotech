@@ -1,0 +1,37 @@
+use mits;
+create table Trans (t_id int primary key auto_increment,
+name varchar(20),
+amount int,c_id int UNIQUE);
+insert into Trans values(1,'sandeep',20000,101);
+insert into Trans values(2,'venky',10000,102);
+insert into Trans values(3,'vara',40000,103);
+insert into Trans values(4,'yash',500000,104);
+
+insert into Trans(name,amount) values('sandeep',30000);
+
+create table customer(customer_id int primary key auto_increment,
+						name varchar(20),amount int,
+						c_id int,foreign key (c_id) references Trans (c_id));
+insert into customer values(1,'venky',100000,101);
+insert into customer values(2,'vara',200000,101);
+insert into customer values(3,'sandeep',300000,102);
+insert into customer values(4,'venky',400000,103);
+insert into customer values(5,'sandy',550000,104);
+
+insert into customer(name) values('saii');
+
+select * from Trans;
+
+select * from customer;
+
+select c.c_id,c.name,c.amount,t.t_id,t.name from customer c inner join Trans t on c.c_id=t.c_id;
+
+select c.name,t.t_id,t.name from customer c left  join Trans t on c.c_id=t.c_id;
+
+use mits;
+CREATE TABLE Sales (sale_id INT,amount INT);
+INSERT INTO Sales VALUES(1, 100),(2, 200),(3, 300),(4, 400),(5, 500),(6,600);
+SELECT SUM(amount) AS Total_Sales, MAX(amount) AS Highest_Sale,MIN(amount) AS Lowest_Sale,COUNT(*) AS Number_Of_Sales,
+    AVG(amount) AS Average_Sale
+FROM Sales;
+select sale_id,sum(amount) from Sales where amount>400 group by sale_id having sum(amount)>250;
